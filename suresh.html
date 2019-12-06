@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Try jQuery Online</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+
+   $("#stuff").keyup(function(event){
+
+var maxCharInALine = 10;
+var tempString=this.value;
+var tempLength=tempString.length;
+var maxLineLength =(tempString.lastIndexOf("\n") ? tempString.lastIndexOf("\n")+maxCharInALine: maxCharInALine);
+   if(tempLength >= maxLineLength){
+       if(tempString.lastIndexOf(" ")>=0){
+            var lastString =  tempString.substr(tempString.lastIndexOf(" ")+1);
+            var stringL =(tempString.substr(0,tempString.lastIndexOf(" "))+"\n"+lastString);
+      
+        }else{
+            var lastString =  tempString.substr(maxLineLength);
+             var stringL =(tempString.substr(0,maxLineLength)+"\n"+lastString);
+        }
+    
+    
+     $("#stuff").val(stringL);
+      
+   }
+
+});
+
+});
+
+</script>
+
+</head>
+<body>
+<textarea  id="stuff" style="width:200px;height:50px"></textarea>
+<textarea id="stuff2">i am second</textarea>
+</body>
+</html>
